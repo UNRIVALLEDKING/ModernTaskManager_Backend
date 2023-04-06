@@ -5,8 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "dev": "nodemon index.js",
-    "build": "echo 'Build started' && rm -rf dist/ && babel src/ -d dist/ --ignore node_modules && echo 'Build complete'"
+    "dev": "nodemon index.js"
   },
   "author": "UNRIVALLEDKING",
   "license": "ISC",
