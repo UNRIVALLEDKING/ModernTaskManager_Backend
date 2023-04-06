@@ -16,6 +16,10 @@ const {
 const router = express.Router();
 module.exports = router;
 
+router.get("/", async (req, res) => {
+  res.status(200).send("Server is Live Now!!!! 🥳🥳🥳🥳");
+});
+
 // API for New User Registration
 router.post("/newUser", NewUserApi);
 
