@@ -4,8 +4,9 @@ const userModels = require("../../model/userModels");
 // Add a new Project
 const addProject = async (req, res) => {
   const getUser = await userModels.findById(req.body.token);
+
+  console.log("user", getUser);
   if (getUser) {
-    // console.log("user", getUser);
     const projectData = new allprojectsModels({
       user: getUser.id,
       title: req.body.title,
