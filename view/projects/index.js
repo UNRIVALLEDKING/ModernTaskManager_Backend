@@ -5,7 +5,7 @@ const userModels = require("../../model/userModels");
 const addProject = async (req, res) => {
   const getUser = await userModels.findById(req.body.token);
   if (getUser) {
-    console.log("user", getUser);
+    // console.log("user", getUser);
     const projectData = new allprojectsModels({
       user: getUser.id,
       title: req.body.title,
@@ -42,7 +42,7 @@ const getProjects = async (req, res) => {
     const allProjects = await allprojectsModels
       .find({ user: req.params.id })
       .sort({ _id: -1 });
-    console.log("allProjects", allProjects);
+    // console.log("allProjects", allProjects);
     res.status(200).json(allProjects);
   } catch (err) {
     res.status(400).json({ message: err.message });
@@ -62,4 +62,33 @@ const updateproject = async (req, res) => {
   }
 };
 
-module.exports = { addProject, getProjects, updateproject };
+// Delete Project
+const deleteProject = async (req, res) => {
+  try {
+    const project = await allprojectsModels.findByIdAndDelete(req.params.id);
+    // console.log("project", project);
+    res.status(200).json(project);
+  } catch (err) {
+    res.status(400).json({ message: err.message });
+    console.log(err);
+  }
+};
+
+const deleteAll = async (req, res) => {
+  try {
+    const projects = await allprojectsModels.deleteMany({
+      user: req.params.id,
+    });
+    res.status(200).json(projects);
+  } catch (err) {
+    res.status(400).json({ message: err.message });
+  }
+};
+
+module.exports = {
+  addProject,
+  getProjects,
+  updateproject,
+  deleteProject,
+  deleteAll,
+};

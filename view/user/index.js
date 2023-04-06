@@ -104,9 +104,22 @@ const loginApi = async (req, res) => {
 //   }
 // };
 
+// Update UserData
+const updateUser = async (req, res) => {
+  const { id, username, password } = req.body;
+  try {
+    const user = await userModels.findByIdAndUpdate(id, { username: username });
+    const newUser = await userModels.findById(id);
+    res.status(200).json(newUser);
+  } catch (err) {
+    res.status(400).json({ message: err.message });
+  }
+};
+
 module.exports = {
   NewUserApi,
 
   loginApi,
-  //  getUserData
+  //  getUserData,
+  updateUser,
 };
