@@ -17,7 +17,7 @@ const router = express.Router();
 module.exports = router;
 
 router.get("/", async (req, res) => {
-  res.status(200).send("Server is Live Now!!!! 🥳🥳🥳🥳");
+  res.status(200).sendFile("./HomePage.html");
 });
 
 // API for New User Registration
