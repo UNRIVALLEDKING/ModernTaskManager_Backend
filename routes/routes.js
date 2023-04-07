@@ -1,4 +1,5 @@
 const express = require("express");
+const path = require("path");
 const {
   addProject,
   getProjects,
@@ -17,7 +18,7 @@ const router = express.Router();
 module.exports = router;
 
 router.get("/", async (req, res) => {
-  res.status(200).sendFile("./HomePage.html");
+  res.status(200).sendFile(path.join(__dirname, "/HomePage.html"));
 });
 
 // API for New User Registration
