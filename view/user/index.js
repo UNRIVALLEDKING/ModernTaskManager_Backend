@@ -118,7 +118,6 @@ const updateUser = async (req, res) => {
 
 module.exports = {
   NewUserApi,
-
   loginApi,
   //  getUserData,
   updateUser,
