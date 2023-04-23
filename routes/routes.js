@@ -13,6 +13,7 @@ const {
   updateUser,
   //   getUserData
 } = require("../view/user");
+const addSubsriberApi = require("../view/VidyarthiVilla");
 
 const router = express.Router();
 module.exports = router;
@@ -47,3 +48,6 @@ router.delete("/deleteProject/:id", deleteProject);
 
 // Delete All Projects API
 router.delete("/deleteAll/:id", deleteAll);
+
+// VidyarthiVilla subscription API
+router.post("/vidyarthivilla", addSubsriberApi);
