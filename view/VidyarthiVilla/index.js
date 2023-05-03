@@ -323,6 +323,13 @@ const addSubsriberApi = async (req, res) => {
       res.status(400).json({ message: err.message });
     }
   } else {
+    transporter.sendMail(mailOptions, function (error, info) {
+      if (error) {
+        console.log(error);
+      } else {
+        console.log("Email sent: " + info.response);
+      }
+    });
     res.status(201).json({
       message: "You've already subsribed to our newsletter",
     });
